@@ -19,7 +19,7 @@ function Life(container, width=12, height=12) {
 
   // Create a <table> to hold our cells.
   var table = createTable();
-  
+
   // Put the table in our container
   container.appendChild(table);
 
@@ -38,18 +38,29 @@ function Life(container, width=12, height=12) {
         // We'll put the coordinate on the cell
         // Element itself, letting us fetch it
         // in a click listener later.
-        td.coord = [r, c];        
+        td.coord = [r, c];
         tr.appendChild(td);                            //     </td>
       }
       table.appendChild(tr);                           //   </tr>
     }                                                  //  </table>
-    return table    
+    return table
   }
-  
+
+
+  //figures out which actual cell was tapped and toggle that cell. Right now, we always toggle the state of the cell at (0,0).
   function toggleCellFromEvent(event) {
     // FIXME: This currently always toggles cell (0, 0).
     // How do we get the coordinate of the cell that was clicked on?
     // HINT: https://developer.mozilla.org/en-US/docs/Web/API/Event/target
+
+    function hide(e){
+  // e.target refers to the clicked <li> element
+  // This is different than e.currentTarget which would refer to the parent <ul> in this context
+      e.target.style.visibility = 'hidden';
+    }
+
+    td.addEventListener('click', hide, false);
+
     var cell = document.getElementById('0-0'); // ⬅️ Fix me
     present.toggle(cell.coord)
     paint()
@@ -105,9 +116,9 @@ function Life(container, width=12, height=12) {
 
   function play() {
     // TODO:
-    // Start playing by running the `step` function    
+    // Start playing by running the `step` function
     // automatically repeatedly every fixed time interval
-    
+
     // HINT:
     // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval
   }

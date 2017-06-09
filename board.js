@@ -159,9 +159,19 @@ function conway(isAlive, numLivingNeighbors) {
  */
 function tick(present, future, rules=conway) {
   // TODO
-  console.log(present)
-  console.log(future)
+  //console.log(present)
+  //console.log(future)
 
+for (var row = 0; row < present.width; row++) {
+  for (var col = 0; col < present.width; col++) {
+    var valueOfCurrent = present.get([row, col]);
+    //console.log("val of current: ", valueOfCurrent);
+    var oneOrZeroOnTick = rules(valueOfCurrent, present.livingNeighbors([row,col]));
+    //console.log("alive? ", aliveOnTick);
+
+    future.set([row, col], oneOrZeroOnTick);
+  }
+}
 
 
   return [future, present]

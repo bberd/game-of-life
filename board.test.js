@@ -194,7 +194,7 @@ describe('tick(present: Board, future: Board!, rules)', () => {
   describe('with rules that toggle cells', () => {
     function flip(alive) { return !alive }
 
-    xit('flips living cells to dead', () => {
+    it('flips living cells to dead', () => {
       var present = new Board(2, 2, [1, 1, 0, 0])
       var future = new Board(2, 2)
       tick(present, future, flip)
@@ -203,7 +203,7 @@ describe('tick(present: Board, future: Board!, rules)', () => {
   })
 
   describe("with conway's rules", () => {
-    xit('does nothing to a block', () => {
+    it('does nothing to a block', () => {
       var block = new Board(2, 2, [
         1, 1,
         1, 1,
@@ -213,7 +213,7 @@ describe('tick(present: Board, future: Board!, rules)', () => {
       expect(future.cells).toEqual(block.cells)
     })
 
-    xit('advances a glider from gen1 to gen2', () => {
+    it('advances a glider from gen1 to gen2', () => {
       var glider1 = new Board(3, 3, [
         1, 0, 1,
         0, 1, 1,
