@@ -175,7 +175,7 @@ describe('conway(isAlive, livingNeighbors) -> Boolean', () => {
 })
 
 describe('tick(present: Board, future: Board!, rules)', () => {
-  xit('returns [future, present]', () => {
+  it('returns [future, present]', () => {
     var present = new Board, future = new Board
     expect(tick(present, future)).toEqual([future, present])
   })

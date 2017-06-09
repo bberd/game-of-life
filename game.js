@@ -7,6 +7,7 @@ if (mainElement) {
     .addEventListener('click', game.step)
 
   // TODO: Connect other buttons.
+
 }
 
 function Life(container, width=12, height=12) {
@@ -53,15 +54,14 @@ function Life(container, width=12, height=12) {
     // How do we get the coordinate of the cell that was clicked on?
     // HINT: https://developer.mozilla.org/en-US/docs/Web/API/Event/target
 
-    function hide(e){
-  // e.target refers to the clicked <li> element
-  // This is different than e.currentTarget which would refer to the parent <ul> in this context
-      e.target.style.visibility = 'hidden';
-    }
 
-    td.addEventListener('click', hide, false);
+    // console.log('clicked')
+    // td.addEventListener('click', hide, false);
+    // console.log(event.target)
+    //     console.log(event.target.id)
 
-    var cell = document.getElementById('0-0'); // ⬅️ Fix me
+    var cell = document.getElementById(event.target.id); // ⬅️ Fix me
+
     present.toggle(cell.coord)
     paint()
   }
@@ -78,6 +78,23 @@ function Life(container, width=12, height=12) {
     // HINT:
     //   https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
     //   https://developer.mozilla.org/en-US/docs/Web/API/Element/getElementsByTagName
+
+    // console.log(present.getElementByTagName('td'))
+    // if(present.getElementByTagName('td')){
+    //     present.classList.add('alive')
+    // }
+    // else
+    // this.classLis.remove("alive")
+
+table.getElementsByTagName('td')
+  .forEach(td =>{
+    if(present.get(td.coord))
+      td.classList.add('alive')
+    else
+      td.classList.remove('alive')
+  })
+    console.log()
+    console.log(table.getElementsByClassName('td'))
   }
 
   function step() {

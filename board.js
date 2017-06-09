@@ -57,7 +57,7 @@ Board.prototype.get = function (coords) {
 Board.prototype.set = function(coords, value) {
   // TODO
   this.cells[this.indexFor(coords)] = value;
-
+  return this;
 }
 
 /**
@@ -119,13 +119,13 @@ Board.prototype.livingNeighbors = function([row, col]) {
  */
 Board.prototype.toggle = function(coords) {
   // TODO
+
   if(this.get(coords) ===0){
     this.set(coords,1);
   }
   else{
     this.set(coords,0)
   }
-
 }
 
 /**
